@@ -1,5 +1,7 @@
 var operation // 'multiply, divide, add, subtract'
 var operandOne, operandTwo
+const operationShort = {'add': '+', 'subtract': '-', 'divide': '/', 'multiply': '*', }
+
 
 $(document).ready(function () {
   attachKeyboardEvents();
@@ -12,12 +14,13 @@ function attachKeyboardEvents() {
     if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105)){
       $('#output').append(e.key)
     }
+    if (e.key === '.'){$('#output').append(e.key)};
     if (e.key === '/'){divide()};
     if (e.key === '-'){subtract();};
     if (e.key === '+'){add();};
     if (e.key === '*'){multiply();};
     if (e.key === 'Enter') {equals();};
-    if (e.key === ' '){clear();}
+    if (e.key === ' '){clear();};
   });
 }
 
@@ -44,6 +47,7 @@ function attachClickEvents() {
 function add(){
   operation = 'add';
   operandOne = Number($('#output').text());
+  writeHistory();
   $('#output').empty();
 }
 
@@ -53,6 +57,7 @@ function subtract(){
   }else {
   operation = 'subtract';
   operandOne = Number($('#output').text());
+  writeHistory();
   $('#output').empty();
   }
 }
@@ -60,12 +65,14 @@ function subtract(){
 function multiply(){
   operation = 'multiply';
   operandOne = Number($('#output').text());
+  writeHistory();
   $('#output').empty();
 }
 
 function divide(){
   operation = 'divide';
   operandOne = Number($('#output').text());
+  writeHistory();
   $('#output').empty();
 }
 
@@ -74,11 +81,13 @@ function clear(){
   operandTwo = undefined
   operation = undefined
   $('#output').empty();
+  $('#history').empty();
 }
 
 function equals() {
   var result;
   operandTwo = Number($('#output').text());
+  $('#history').append(operandTwo.toString());
   if (operandOne && operandTwo) {
     if (operation === 'add'){result = operandOne + operandTwo}
     if (operation === 'subtract'){result = operandOne - operandTwo}
@@ -88,5 +97,10 @@ function equals() {
     operandTwo = undefined
     operation = undefined
     $('#output').text(result);
+    $('#history').append(' = ' + result.toString() + '<br>')
   }
+}
+
+function writeHistory() {
+  $('#history').append(operandOne.toString() + operationShort[operation]);
 }

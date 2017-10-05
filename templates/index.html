@@ -7,11 +7,13 @@
 </head>
 
 <body>
-  <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+  <div class='row'>
+    <div class='col-sm-6'>
+  <div class="card card-inverse text-center" style="background-color: #333; border-color: #333;">
     <div class='card-block'>
       <div class='btn-group-vertical'>
         <div class='container'>
-          <div class='btn-group btn-group-justified'>
+          <div class='row-fluid btn-group btn-group-justified'>
             <button type="button" class="btn-lg btn-secondary" id='7'>7</button>
             <button type="button" class="btn-lg btn-secondary" id='8'>8</button>
             <button type="button" class="btn-lg btn-secondary" id='9'>9</button>
@@ -19,7 +21,7 @@
           </div>
         </div>
         <div class='container'>
-          <div class='btn-group btn-group-justified'>
+          <div class='row-fluid btn-group btn-group-justified'>
             <button type="button" class="btn-lg btn-secondary" id='4'>4</button>
             <button type="button" class="btn-lg btn-secondary" id='5'>5</button>
             <button type="button" class="btn-lg btn-secondary" id='6'>6</button>
@@ -27,7 +29,7 @@
           </div>
         </div>
         <div class='container'>
-         <div class='btn-group btn-group-justified'>
+         <div class='row-fluid btn-group btn-group-justified'>
            <button type="button" class="btn-lg btn-secondary" id='1'>1</button>
            <button type="button" class="btn-lg btn-secondary" id='2'>2</button>
            <button type="button" class="btn-lg btn-secondary" id='3'>3</button>
@@ -35,7 +37,7 @@
          </div>
         </div>
         <div class='container'>
-          <div class='btn-group btn-group-justified'>
+          <div class='row-fluid btn-group btn-group-justified'>
             <button type="button" class="btn-lg btn-secondary" id='0'>0</button>
             <button type="button" class="btn-lg btn-info" id='decimal'>.</button>
             <button type="button" class="btn-lg btn-success" id='equals'>=</button>
@@ -48,6 +50,17 @@
       </div>
     </div>
   </div>
+</div>
+<div class='col-sm-6'>
+    <div class='card'>
+      <div class='card-block'>
+      <p class='card-text' id='history'></p>
+    </div>
+    </div>
+  </div>
+</div>
+
+
 
   <div class='card'>
     <div class='display-1 card-block text-nowrap' id='output'>
