@@ -45,35 +45,53 @@ function attachClickEvents() {
 }
 
 function add(){
+  if (operation !== undefined){
+    equals();
+    operation = 'add';
+    $('#output').empty();
+  } else{
   operation = 'add';
   operandOne = Number($('#output').text());
-  writeHistory();
   $('#output').empty();
+  }
 }
 
 function subtract(){
   if ($('#output').text() == "") { // Negative Number Entry Handling Code
     $('#output').append('-');
-  }else {
+  } else if (operation !== undefined){
+    equals();
+    operation = 'subtract';
+    $('#output').empty();
+  } else {
   operation = 'subtract';
   operandOne = Number($('#output').text());
-  writeHistory();
   $('#output').empty();
   }
 }
 
 function multiply(){
+  if (operation !== undefined){
+    equals();
+    operation = 'multiply';
+    $('#output').empty();
+  } else{
   operation = 'multiply';
   operandOne = Number($('#output').text());
-  writeHistory();
   $('#output').empty();
+  }
 }
 
 function divide(){
+  if (operation !== undefined){
+    equals();
+    operation = 'divide';
+    $('#output').empty();
+  } else{
   operation = 'divide';
   operandOne = Number($('#output').text());
-  writeHistory();
   $('#output').empty();
+  }
 }
 
 function clear(){
@@ -87,7 +105,6 @@ function clear(){
 function equals() {
   var result;
   operandTwo = Number($('#output').text());
-  $('#history').append(operandTwo.toString());
   if (operandOne && operandTwo) {
     if (operation === 'add'){result = operandOne + operandTwo}
     if (operation === 'subtract'){result = operandOne - operandTwo}
@@ -97,10 +114,5 @@ function equals() {
     operandTwo = undefined
     operation = undefined
     $('#output').text(result);
-    $('#history').append(' = ' + result.toString() + '<br>')
   }
-}
-
-function writeHistory() {
-  $('#history').append(operandOne.toString() + operationShort[operation]);
 }
