@@ -1,6 +1,6 @@
 var operation // 'multiply, divide, add, subtract'
-var operandOne, operandTwo
-const operationShort = {'add': '+', 'subtract': '-', 'divide': '/', 'multiply': '*', }
+var operandOne, operandTwo, result
+const operationArray = {'add': '+', 'subtract': '-', 'divide': '/', 'multiply': '*', }
 
 
 $(document).ready(function () {
@@ -103,16 +103,17 @@ function clear(){
 }
 
 function equals() {
-  var result;
   operandTwo = Number($('#output').text());
-  if (operandOne && operandTwo) {
+  if (operandOne && operandTwo && operation) {
     if (operation === 'add'){result = operandOne + operandTwo}
     if (operation === 'subtract'){result = operandOne - operandTwo}
     if (operation === 'multiply'){result = operandOne * operandTwo}
     if (operation === 'divide'){result = operandOne / operandTwo}
+    $('#history').append(operandOne.toString()+ ' ' + operationArray[operation] + ' ' + operandTwo.toString() + ' = ' + result + '<br>');
     operandOne = result;
+    $('#output').text(result);
     operandTwo = undefined
     operation = undefined
-    $('#output').text(result);
+    result = undefined
   }
 }
